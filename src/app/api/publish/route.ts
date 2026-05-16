@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     }
 
     const bump = calculateVersionBump(originalPage, draftPage);
-    
+
     if (bump === 'none') {
       return NextResponse.json({ message: 'No changes to publish', version: currentVersion });
     }
@@ -22,23 +22,33 @@ export async function POST(request: NextRequest) {
 
     // Save snapshot to local filesystem (simulating immutable release storage)
     const releasesDir = path.join(process.cwd(), 'releases', slug);
-    await fs.mkdir(releasesDir, { recursive: true });
+    let isSimulated = false;
 
-    const snapshot = {
-      version: newVersion,
-      timestamp: new Date().toISOString(),
-      page: draftPage,
-      bump,
-    };
-
-    const filePath = path.join(releasesDir, `${newVersion}.json`);
-    await fs.writeFile(filePath, JSON.stringify(snapshot, null, 2));
+    try {
+      await fs.mkdir(releasesDir, { recursive: true });
+      const snapshot = {
+        version: newVersion,
+        timestamp: new Date().toISOString(),
+        page: draftPage,
+        bump,
+      };
+      const filePath = path.join(releasesDir, `${newVersion}.json`);
+      await fs.writeFile(filePath, JSON.stringify(snapshot, null, 2));
+    } catch (e: any) {
+      if (e.code === 'EROFS' || e.code === 'EACCES') {
+        console.warn('Read-only filesystem detected. Snapshot not saved to disk, but publish confirmed.');
+        isSimulated = true;
+      } else {
+        throw e;
+      }
+    }
 
     return NextResponse.json({
       success: true,
       version: newVersion,
       bump,
       snapshotPath: `/releases/${slug}/${newVersion}.json`,
+      simulated: isSimulated
     });
   } catch (error) {
     console.error('Publish error:', error);
