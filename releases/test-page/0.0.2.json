@@ -1,6 +1,6 @@
 {
-  "version": "0.0.1",
-  "timestamp": "2026-05-16T20:02:32.913Z",
+  "version": "0.0.2",
+  "timestamp": "2026-05-16T20:02:49.793Z",
   "page": {
     "pageId": "mock-1",
     "slug": "test-page",
@@ -10,7 +10,7 @@
         "id": "sec-1",
         "type": "hero",
         "props": {
-          "title": "Build Faster with Page Studio 1",
+          "title": "Build Faster with Page Studio 2",
           "subtitle": "A powerful, schema-driven editor for high-performance landing pages.",
           "ctaLabel": "Get Started",
           "ctaUrl": "#",

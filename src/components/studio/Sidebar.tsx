@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/lib/store";
 import { selectSection } from "@/lib/store/slices/uiSlice";
 import {
+  setPage,
   updateSectionProps,
   reorderSections,
   addSection,
@@ -30,6 +31,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
@@ -298,8 +300,11 @@ export const Sidebar = () => {
                 key={release.version}
                 type="button"
                 onClick={() => {
+                  console.log("Restoring version:", release.version, release.snapshot);
                   dispatch(setPage(release.snapshot));
-                  toast.success(`Viewing version ${release.version}`);
+                  toast.success(`Restored Version ${release.version}`, {
+                    description: "The canvas has been updated to this snapshot."
+                  });
                 }}
                 className={`w-full text-left p-3 rounded-lg border transition-all group ${
                   idx === 0
