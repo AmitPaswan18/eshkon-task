@@ -1,7 +1,7 @@
 import { SectionType } from '@/lib/schema';
 import { Hero, FeatureGrid, Testimonial, CTA, UnsupportedSection } from './SectionComponents';
 
-export const SECTION_REGISTRY: Record<SectionType, React.ComponentType<Record<string, unknown>>> = {
+export const SECTION_REGISTRY: Record<SectionType, React.ComponentType<any>> = {
   hero: Hero,
   featureGrid: FeatureGrid,
   testimonial: Testimonial,
