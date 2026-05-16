@@ -1,0 +1,52 @@
+{
+  "version": "0.0.1",
+  "timestamp": "2026-05-16T18:48:19.572Z",
+  "page": {
+    "pageId": "mock-1",
+    "slug": "test-page",
+    "title": "Sample Landing Page",
+    "sections": [
+      {
+        "id": "sec-1",
+        "type": "hero",
+        "props": {
+          "title": "Build Faster with Page Studio here",
+          "subtitle": "A powerful, schema-driven editor for high-performance landing pages.",
+          "ctaLabel": "Get Started RN",
+          "ctaUrl": "#"
+        }
+      },
+      {
+        "id": "sec-2fid7zoee",
+        "type": "cta",
+        "props": {
+          "title": "Call to Action 112",
+          "buttonLabel": "Join Now  to connect",
+          "buttonUrl": "#"
+        }
+      },
+      {
+        "id": "sec-2",
+        "type": "featureGrid",
+        "props": {
+          "title": "Powerful Features",
+          "features": [
+            {
+              "title": "Schema Driven",
+              "description": "Everything is validated with Zod for total safety."
+            },
+            {
+              "title": "Redux State",
+              "description": "Undo, redo, and state persistence out of the box."
+            },
+            {
+              "title": "A11y First",
+              "description": "WCAG 2.2 AAA standards implemented by default."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bump": "patch"
+}
