@@ -46,7 +46,7 @@ const getMockPage = (slug: string) => ({
 });
 
 export default function StudioPage() {
-  const params = React.use(useParams() as any) as { slug: string };
+  const params = useParams() as { slug: string };
   const slug = params.slug;
   const dispatch = useDispatch();
   const { role } = useSelector((state: RootState) => state.ui);

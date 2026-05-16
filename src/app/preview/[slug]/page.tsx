@@ -50,8 +50,8 @@ const getMockPage = (slug: string) => ({
 });
 
 interface PreviewPageProps {
-  params: { slug: string };
-  searchParams: { preview?: string };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
 }
 
 export default async function PreviewPage({
@@ -59,7 +59,8 @@ export default async function PreviewPage({
   searchParams,
 }: PreviewPageProps) {
   const { slug } = await params;
-  const isPreview = searchParams.preview === "true";
+  const sParams = await searchParams;
+  const isPreview = sParams.preview === "true";
 
   // In a real app:
   // const page = await getPageBySlug(slug, isPreview);
