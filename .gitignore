@@ -8,7 +8,7 @@
 /coverage
 /test-results/
 /playwright-report/
-/blob-report/
+/blob-report/,
 /playwright/.cache
 /a11y-report.json
 
@@ -43,6 +43,5 @@ yarn-error.log*
 
 # requirement and other docs (as per user's previous update)
 requirement.md
-writeup.md
 assessment.md
 instructions.md
